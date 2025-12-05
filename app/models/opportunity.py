@@ -5,7 +5,7 @@ from app.db.session import Base
 class Opportunity(Base):
     __tablename__ = "opportunities"
 
-    id = Column(Integer, primary_key, index=True)
+    id = Column(Integer, primary_key=True, index=True)
     title = Column(String, nullable=False)
     category = Column(String, nullable=False)
     short_description = Column(String, nullable=False)
