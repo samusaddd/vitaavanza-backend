@@ -5,6 +5,6 @@ psycopg2-binary
 python-dotenv
 passlib[bcrypt]
 python-jose[cryptography]
-pydantic[email]
+pydantic[email]<2.0.0
 openai>=1.0.0
 loguru
