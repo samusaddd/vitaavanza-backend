@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+SQLAlchemy>=2.0
+psycopg2-binary
+python-dotenv
+passlib[bcrypt]
+python-jose[cryptography]
+pydantic[email]
+openai>=1.0.0
+loguru
