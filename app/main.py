@@ -10,7 +10,6 @@ from app.api.v1 import api_router
 settings = get_settings()
 logger = get_logger("main")
 
-# Create tables at startup (simple MVP). For production, use Alembic migrations.
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
@@ -18,13 +17,15 @@ app = FastAPI(
     debug=settings.app_debug,
 )
 
+# <<< CORS – copy this EXACT block >>>
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.allowed_origins,
+    allow_origins=["*"],      # allow ALL origins for now
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+# <<< END CORS >>>
 
 @app.middleware("http")
 async def add_request_logging(request: Request, call_next):
@@ -39,4 +40,3 @@ app.include_router(api_router, prefix="/api/v1")
 @app.get("/health")
 def health_check():
     return {"status": "ok"}
-
